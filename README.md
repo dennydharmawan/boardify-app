@@ -1,81 +1,80 @@
-# Turborepo starter
+# Boardify
 
-This is an official starter Turborepo.
+Boardify is a project management application designed to streamline and organize your portfolio projects, drawing inspiration from the popular tool Trello.
 
-## Using this example
+![Boardify Preview](link_to_image)
 
-Run the following command:
+---
 
-```sh
-npx create-turbo@latest
-```
+## Overview
 
-## What's inside?
+Boardify is a robust project management solution that mirrors the intuitive layout and functionality of Trello. With its user-friendly interface, it empowers you to efficiently manage tasks, collaborate with teams, and track project progress seamlessly.
 
-This Turborepo includes the following packages/apps:
+---
 
-### Apps and Packages
+## Features
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- **Board Creation**: Create multiple boards to represent different projects within your portfolio.
+- **Customizable Lists**: Organize boards with customizable lists to represent stages, tasks, or categories.
+- **Card System**: Add cards to lists, detailing specific tasks, ideas, or notes.
+- **Drag-and-Drop Interface**: Easily move cards between lists to update task statuses.
+- **User Authentication**: Securely log in to access your boards and manage projects.
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+---
 
-### Utilities
+## Installation
 
-This Turborepo has some additional tools already setup for you:
+To run Boardify locally:
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+1. Clone this repository.
 
-### Build
+   ```bash
+   git clone https://github.com/your-username/boardify.git
+2. Install dependencies.
 
-To build all apps and packages, run the following command:
+   ```bash
+   cd boardify
+2. Install dependencies.
 
-```
-cd my-turborepo
-pnpm build
-```
+   ```bash
+   cd boardify
+2. Install dependencies.
 
-### Develop
+   ```bash
+   cd boardify
 
-To develop all apps and packages, run the following command:
+## Usage
 
-```
-cd my-turborepo
-pnpm dev
-```
+1. Sign up or log in to your Boardify account.
+2. Create a new board for each portfolio project.
+3. Customize lists within boards to reflect project stages or task categories.
+4. Add and manage cards within lists to represent individual tasks or notes.
+5. Utilize the drag-and-drop feature to update task progress across lists.
 
-### Remote Caching
+---
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+## Technologies Used
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+- Frontend: React, Redux
+- Backend: Node.js, Express.js
+- Database: MongoDB
+- Styling: CSS, styled-components
 
-```
-cd my-turborepo
-npx turbo login
-```
+---
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+## License
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+This project is licensed under the [MIT License](link_to_license).
 
-```
-npx turbo link
-```
+---
 
-## Useful Links
+## Acknowledgments
 
-Learn more about the power of Turborepo:
+- **Trello**: Inspiration behind the project layout and functionalities.
+- Gratitude to contributors and open-source projects that have aided in developing Boardify.
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+---
+
+## Contact
+
+For inquiries or feedback, feel free to contact us at <contact@dennydharmawan.com>
