@@ -1,6 +1,10 @@
 {
   "name": "boardify-app",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "libs/*"
+  ],
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
