@@ -30,14 +30,7 @@ To run Boardify locally:
 
    ```bash
    git clone https://github.com/your-username/boardify.git
-2. Install dependencies.
 
-   ```bash
-   cd boardify
-2. Install dependencies.
-
-   ```bash
-   cd boardify
 2. Install dependencies.
 
    ```bash
