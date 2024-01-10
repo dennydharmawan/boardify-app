@@ -1,12 +1,10 @@
-import { Application } from 'express';
 import type http from 'http';
+import { Application } from 'express';
+
 import expressLoader from './express';
 import Logger from './logger';
 
-export default async function bootstrapLoaders(
-  server: http.Server,
-  app: Application
-) {
+export default async function bootstrapLoaders(server: http.Server, app: Application) {
   Logger.info('✌️ DB loaded and connected!');
 
   await expressLoader({ app });

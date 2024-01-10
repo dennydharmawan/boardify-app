@@ -1,8 +1,9 @@
-import config from '@/config';
-import apiRoutesLoader from './api-routes';
-
 import cors from 'cors';
 import express from 'express';
+
+import config from '@/config';
+
+import apiRoutesLoader from './api-routes';
 
 export default ({ app }: { app: express.Application }) => {
   /**
@@ -57,8 +58,8 @@ export default ({ app }: { app: express.Application }) => {
     res.status(err.status || 500);
     res.json({
       errors: {
-        message: err.message,
-      },
+        message: err.message
+      }
     });
   });
 };

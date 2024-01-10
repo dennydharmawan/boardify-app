@@ -18,12 +18,11 @@ module.exports = {
     '',
     '^[./]'
   ],
-  importOrderParserPlugins: ['typescript', 'jsx', 'decorators-legacy'],
+  importOrderParserPlugins: ['typescript', 'jsx', 'decorators-legacy', 'prettier'],
   importOrderTypeScriptVersion: '5.0.0',
 
   // list all your plugins and put prettier-plugin-tailwindcss last
   // https://github.com/tailwindlabs/prettier-plugin-tailwindcss
   plugins: ['@ianvs/prettier-plugin-sort-imports', 'prettier-plugin-tailwindcss'],
-  pluginSearchDirs: false,
   tailwindFunctions: ['clsx', 'twMerge', 'cn', 'cva', 'tw']
 };
