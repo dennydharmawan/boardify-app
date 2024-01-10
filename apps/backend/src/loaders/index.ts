@@ -1,5 +1,5 @@
 import type http from 'http';
-import { Application } from 'express';
+import { type Application } from 'express';
 
 import expressLoader from './express';
 import Logger from './logger';

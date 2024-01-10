@@ -24,7 +24,8 @@ module.exports = {
     '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/no-unused-vars': 'off',
-    'no-unused-vars': 'off'
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-explicit-any': 'off'
   },
   settings: {
     'import/resolver': {
@@ -32,5 +33,6 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx']
       }
     }
-  }
+  },
+  ignorePatterns: ['dist', 'node_modules', 'coverage', 'sequelize']
 };

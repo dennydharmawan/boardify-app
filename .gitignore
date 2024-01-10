@@ -1,13 +1,14 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # Ignore node_modules directory
-node_modules
+**/node_modules
 
 # Ignore build and compiled files
-/build/
-/dist/
-/.next/
-/out/
+**/build/
+**/dist/
+**/.next/
+**/out/
+
 
 
 # Ignore environment variables (if used)
@@ -16,6 +17,8 @@ node_modules
 .env.development.local
 .env.test.local
 .env.production.local
+
+.vscode
 
 # Turbo
 .turbo

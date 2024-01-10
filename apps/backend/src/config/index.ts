@@ -16,8 +16,16 @@ const CONFIG = {
   isTest: env.get('NODE_ENV').default('development').asString() === 'test',
   isDevelopment: env.get('NODE_ENV').default('development').asString() === 'development',
 
-  app: {
-    port: env.get('PORT').default(8001).asPortNumber()
+  server: {
+    port: env.get('PORT').asPortNumber() || 3001
+  },
+  client: {
+    host: env.get('CLIENT_HOST').asUrlString(),
+    port: env.get('CLIENT_PORT').asPortNumber() || 3000
+  },
+  log: {
+    level: env.get('LOG_LEVEL').asString() || 'debug',
+    enable: env.get('LOG_ENABLE').asBool() || true
   },
 
   // app: {
