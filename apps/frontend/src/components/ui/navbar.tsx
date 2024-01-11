@@ -14,8 +14,6 @@ const Navbar = () => {
     window.location.href = 'http://localhost:3001/api/auth/google';
   };
 
-  console.log(currentUser);
-
   // const handleLogout = () => {
   //   axios
   //     .get('http://localhost:3001/api/logout')

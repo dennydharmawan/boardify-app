@@ -34,8 +34,16 @@ export default ({ app }: { app: express.Application }) => {
   );
 
   // Use express session to maintain state across requests
-  // https://www.youtube.com/watch?v=yICiz12SdI4
-  app.use(session({ secret: CONFIG.auth.cookieSecret, resave: true, saveUninitialized: true }));
+  app.use(
+    session({
+      secret: CONFIG.auth.cookieSecret,
+      resave: false,
+      saveUninitialized: true,
+      cookie: {
+        maxAge: 24 * 60 * 60 * 1000 // Set the maximum age of the session to 24 hours (in milliseconds)
+      }
+    })
+  );
   app.use(passport.initialize());
   app.use(passport.session());
   passport.use(
