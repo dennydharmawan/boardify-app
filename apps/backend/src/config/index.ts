@@ -20,7 +20,7 @@ const CONFIG = {
     port: env.get('SERVER_PORT').asPortNumber() || 3001
   },
   client: {
-    url: env.get('CLIENT_URL').asString()
+    url: env.get('CLIENT_URL').required().asString()
   },
   log: {
     level: env.get('LOG_LEVEL').asString() || 'debug',

@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import passport from 'passport';
 
+import CONFIG from '@/config';
+
 export default (router: Router) => {
   const route = Router();
 
@@ -15,7 +17,7 @@ export default (router: Router) => {
       failureMessage: 'Cannot login to google, please try again later!'
     }),
     (req, res) => {
-      res.redirect('http://localhost:5173');
+      res.redirect(CONFIG.client.url);
     }
   );
 
@@ -24,11 +26,7 @@ export default (router: Router) => {
     res.redirect('/');
   });
 
-  route.get('/user', (req, res) => {
-    if (req.isAuthenticated()) {
-      res.json({ user: req.user });
-    } else {
-      res.status(401).json({ error: 'Unauthorized' });
-    }
+  route.get('/users/me', (req, res) => {
+    res.json(req.user || null);
   });
 };

@@ -46,8 +46,6 @@ export default ({ app }: { app: express.Application }) => {
         callbackURL: 'http://localhost:3001/api/auth/google/callback'
       },
       (accessToken, refreshToken, profile, done) => {
-        console.log(profile);
-
         done(null, profile);
       }
     )

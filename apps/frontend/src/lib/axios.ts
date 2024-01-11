@@ -1,23 +1,12 @@
 import Axios from 'axios';
 
-import { API_URL } from '@/config';
+import { notifications } from '@mantine/notifications';
 
-// import { useNotificationStore } from '@/stores/notifications';
-// import storage from '@/utils/storage';
-
-// function authRequestInterceptor(config: AxiosRequestConfig) {
-//   const token = storage.getToken();
-
-//   if (token) {
-//     config.headers.authorization = `${token}`;
-//   }
-
-//   config.headers.Accept = 'application/json';
-//   return config;
-// }
+import { CONFIG } from '@/config';
 
 export const axios = Axios.create({
-  baseURL: API_URL
+  baseURL: CONFIG.app.apiUrl,
+  withCredentials: true
 });
 
 // axios.interceptors.request.use(authRequestInterceptor);
@@ -27,11 +16,20 @@ axios.interceptors.response.use(
   },
   (error) => {
     const message = error.response?.data?.message || error.message;
-    // useNotificationStore.getState().addNotification({
-    //   type: 'error',
-    //   title: 'Error',
-    //   message
-    // });
+    notifications.show({
+      title: 'Error',
+      message,
+      color: 'error'
+    });
+
+    // redirect to login page for unauthorized users
+    // if (error.response?.status === HttpStatusCode.Unauthorized) {
+    //   if (history.location.pathname !== '/login') {
+    //     history.push('/', { from: history.location.pathname });
+    //   }
+
+    //   return Promise.resolve();
+    // }
 
     return Promise.reject(error);
   }

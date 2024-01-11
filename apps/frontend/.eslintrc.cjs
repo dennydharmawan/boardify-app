@@ -19,6 +19,7 @@ module.exports = {
     'react-refresh/only-export-components': 'warn',
     '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/consistent-type-imports': 'error',
+    '@typescript-eslint/no-explicit-any': 'off',
     'import/consistent-type-specifier-style': ['error', 'prefer-inline'],
     'import/no-duplicates': 'error',
     'import/no-extraneous-dependencies': 'off',

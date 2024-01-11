@@ -10,13 +10,12 @@ import {
 
 export const queryClient = new QueryClient({
   // change this as needed
-  // defaultOptions: {
-  //   queries: {
-  //     useErrorBoundary: true,
-  //     refetchOnWindowFocus: false,
-  //     retry: false
-  //   }
-  // },
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: true
+    }
+  },
   queryCache: new QueryCache({
     onError: (error, query) => {
       // https://tkdodo.eu/blog/breaking-react-querys-api-on-purpose

@@ -179,6 +179,6 @@ export default {
       ...colors
     }
   },
-  plugins: [require('@tailwindcss/typography'), require('tailwindcss-3d')]
+  plugins: [require('tailgrids/plugin'), require('@tailwindcss/typography'), require('tailwindcss-3d')]
   //require('tailwind-fluid-typography')
 };

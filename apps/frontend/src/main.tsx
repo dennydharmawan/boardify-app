@@ -6,8 +6,10 @@ import '@mantine/core/styles.css';
 
 import { Routes } from '@generouted/react-router';
 import { Notifications } from '@mantine/notifications';
+import { QueryClientProvider } from '@tanstack/react-query';
 
 import { mantineColors } from './lib/mantine.ts';
+import { queryClient } from './lib/react-query.ts';
 
 import './styles/base.css';
 
@@ -20,6 +22,8 @@ const theme = createTheme({
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <MantineProvider theme={theme}>
     <Notifications />
-    <Routes />
+    <QueryClientProvider client={queryClient}>
+      <Routes />
+    </QueryClientProvider>
   </MantineProvider>
 );
