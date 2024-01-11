@@ -9,7 +9,11 @@ module.exports = {
     'plugin:tailwindcss/recommended'
   ],
   parser: '@typescript-eslint/parser',
-  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json']
+  },
   plugins: ['@typescript-eslint', 'import', 'react-refresh'],
   rules: {
     'react-refresh/only-export-components': 'warn',

@@ -10,12 +10,12 @@ import logger from './loaders/logger';
 
 async function startServer() {
   const app = express();
-  app.set('port', CONFIG.server.port);
+  app.set('port', CONFIG.app.port);
   const server = http.createServer(app);
 
   await bootstrapLoaders(server, app);
 
-  server.listen(CONFIG.server.port, async () => {
+  server.listen(CONFIG.app.port, async () => {
     banner(logger);
   });
 

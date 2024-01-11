@@ -31,7 +31,7 @@ export function banner(logger: Logger): void {
 
   logger.info(`
   ################################################
-  🛡️  Server listening on port: ${CONFIG.server.port} 🛡️
+  🛡️  Server listening on port: ${CONFIG.app.port} 🛡️
   ################################################
 `);
 }

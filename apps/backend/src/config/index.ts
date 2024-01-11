@@ -16,16 +16,20 @@ const CONFIG = {
   isTest: env.get('NODE_ENV').default('development').asString() === 'test',
   isDevelopment: env.get('NODE_ENV').default('development').asString() === 'development',
 
-  server: {
-    port: env.get('PORT').asPortNumber() || 3001
+  app: {
+    port: env.get('SERVER_PORT').asPortNumber() || 3001
   },
   client: {
-    host: env.get('CLIENT_HOST').asUrlString(),
-    port: env.get('CLIENT_PORT').asPortNumber() || 3000
+    url: env.get('CLIENT_URL').asString()
   },
   log: {
     level: env.get('LOG_LEVEL').asString() || 'debug',
     enable: env.get('LOG_ENABLE').asBool() || true
+  },
+  auth: {
+    clientId: env.get('CLIENT_ID').required().asString(),
+    clientSecret: env.get('CLIENT_SECRET').required().asString(),
+    cookieSecret: env.get('COOKIE_SECRET').required().asString()
   },
 
   // app: {

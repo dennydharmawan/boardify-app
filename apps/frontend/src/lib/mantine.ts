@@ -1,19 +1,14 @@
 import * as _ from 'lodash-es';
 
-import { type MantineThemeColors } from '@mantine/core';
+import { type DefaultMantineColor, type MantineColorsTuple, type MantineThemeColors } from '@mantine/core';
 
 import colors from '../../tailwind.color';
 
-type Tuple<T, N extends number> = N extends N ? (number extends N ? T[] : _TupleOf<T, N, []>) : never;
-type _TupleOf<T, N extends number, R extends unknown[]> = R['length'] extends N
-  ? R
-  : _TupleOf<T, N, [T, ...R]>;
-
-type CustomColors = keyof typeof colors;
+type CustomColors = keyof typeof colors | DefaultMantineColor;
 
 declare module '@mantine/core' {
   export interface MantineThemeColorsOverride {
-    colors: Record<CustomColors, Tuple<string, 10>>;
+    colors: Record<CustomColors, MantineColorsTuple>;
   }
 }
 

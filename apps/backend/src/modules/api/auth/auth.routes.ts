@@ -1,33 +1,34 @@
-import { Router, type NextFunction, type Request, type Response } from 'express';
-
-import { type POSTAL_CODE } from './my-type';
-
-// import { POSTAL_CODE } from './my-type';
-
-// import { type POSTAL_CODE } from './my-type';
-
-// import { type POSTAL_CODE } from './my-type';
-
-// import { POSTAL_CODE } from './my-type';
-
-// import { SERVER } from '@/modules/server/server.service';
-// import { POSTAL_CODE } from './my-type';
-
-// import { POSTAL_CODE } from './my-type';
-
-// import { type KeeperV2 } from '@finaccel/zookeeper-auth';
-
-// import AuthController from './auth.controller';
-// import { authenticateWithKeeper } from './auth.middleware';
+import { Router } from 'express';
+import passport from 'passport';
 
 export default (router: Router) => {
-  const a: POSTAL_CODE = '';
-  // const keeperMiddleware = Container.get<KeeperV2>('keeperMiddleware');
-  // const authController = Container.get(AuthController);
   const route = Router();
+
   router.use('/auth', route);
 
-  route.get('/login', (req: Request, res: Response, next: NextFunction) => {
-    return { success: true };
+  route.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+  route.get(
+    '/google/callback',
+    passport.authenticate('google', {
+      failureRedirect: '/',
+      failureMessage: 'Cannot login to google, please try again later!'
+    }),
+    (req, res) => {
+      res.redirect('http://localhost:5173');
+    }
+  );
+
+  route.get('/logout', (req, res) => {
+    // req.logout();
+    res.redirect('/');
+  });
+
+  route.get('/user', (req, res) => {
+    if (req.isAuthenticated()) {
+      res.json({ user: req.user });
+    } else {
+      res.status(401).json({ error: 'Unauthorized' });
+    }
   });
 };
