@@ -1,13 +1,23 @@
 import type http from 'http';
 import { type Application } from 'express';
+import Container from 'typedi';
+
+import { initModels } from '@/models/init-models';
 
 import expressLoader from './express';
-import Logger from './logger';
+import logger from './logger';
+import sequelizeConnection from './sequelize';
 
 export default async function bootstrapLoaders(server: http.Server, app: Application) {
-  Logger.info('✌️ DB loaded and connected!');
+  logger.info('✌️ DB loaded and connected!');
 
   await expressLoader({ app });
+  const models = initModels(sequelizeConnection);
 
-  Logger.info('✌️ Express loaded');
+  Container.set('logger', logger);
+  Container.set('server', server);
+  Container.set('sequelizeConnection', sequelizeConnection);
+  Container.set('models', models);
+
+  logger.info('✌️ Express loaded');
 }

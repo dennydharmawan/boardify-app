@@ -31,6 +31,13 @@ const CONFIG = {
     clientSecret: env.get('CLIENT_SECRET').required().asString(),
     cookieSecret: env.get('COOKIE_SECRET').required().asString()
   },
+  database: {
+    host: env.get('DATABASE_HOST').required().asString(),
+    port: env.get('DATABASE_PORT').required().asPortNumber(),
+    username: env.get('DATABASE_USERNAME').required().asString(),
+    password: env.get('DATABASE_PASSWORD').required().asString(),
+    name: env.get('DATABASE_NAME').required().asString()
+  },
 
   // app: {
   //   name: getOsEnv('APP_NAME'),

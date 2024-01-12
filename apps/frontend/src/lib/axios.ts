@@ -1,8 +1,9 @@
-import Axios from 'axios';
+import Axios, { HttpStatusCode } from 'axios';
 
 import { notifications } from '@mantine/notifications';
 
 import { CONFIG } from '@/config';
+import history from '@/lib/history';
 
 export const axios = Axios.create({
   baseURL: CONFIG.app.apiUrl,
@@ -23,13 +24,13 @@ axios.interceptors.response.use(
     });
 
     // redirect to login page for unauthorized users
-    // if (error.response?.status === HttpStatusCode.Unauthorized) {
-    //   if (history.location.pathname !== '/login') {
-    //     history.push('/', { from: history.location.pathname });
-    //   }
+    if (error.response?.status === HttpStatusCode.Unauthorized) {
+      if (history.location.pathname !== '/') {
+        history.push('/', { from: history.location.pathname });
+      }
 
-    //   return Promise.resolve();
-    // }
+      return Promise.resolve();
+    }
 
     return Promise.reject(error);
   }

@@ -11,6 +11,7 @@ import GoogleStrategy from 'passport-google-oauth20';
 import pinoHTTP from 'pino-http';
 
 import CONFIG from '@/config';
+import { User } from '@/models/user';
 import { errorHandler, notFoundHandler } from '@/modules/error-handler/error-handler.middlewares';
 
 import apiRoutesLoader from './api-routes';
@@ -53,8 +54,24 @@ export default ({ app }: { app: express.Application }) => {
         clientSecret: CONFIG.auth.clientSecret,
         callbackURL: 'http://localhost:3001/api/auth/google/callback'
       },
-      (accessToken, refreshToken, profile, done) => {
-        done(null, profile);
+      async (accessToken, refreshToken, profile, done) => {
+        const defaultUser = {
+          fullName: `${profile.name?.givenName} ${profile.name?.familyName}`,
+          email: profile?.emails?.[0].value,
+          avatarUrl: profile?.photos?.[0].value,
+          googleId: profile.id
+        };
+
+        try {
+          const [user] = await User.findOrCreate({
+            where: { googleId: profile.id },
+            defaults: defaultUser
+          });
+
+          done(null, profile);
+        } catch (error) {
+          done(error as Error, undefined);
+        }
       }
     )
   );
