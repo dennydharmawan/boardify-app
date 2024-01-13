@@ -17,7 +17,7 @@ export default async function bootstrapLoaders(server: http.Server, app: Applica
   Container.set('logger', logger);
   Container.set('server', server);
   Container.set('sequelizeConnection', sequelizeConnection);
-  Container.set('models', models);
+  Container.set<typeof models>('models', models);
 
   logger.info('✌️ Express loaded');
 }

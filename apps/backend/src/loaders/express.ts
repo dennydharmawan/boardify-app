@@ -45,8 +45,11 @@ export default ({ app }: { app: express.Application }) => {
       }
     })
   );
+
+  // Initialize passport for authentication
   app.use(passport.initialize());
   app.use(passport.session());
+
   passport.use(
     new GoogleStrategy.Strategy(
       {
@@ -68,9 +71,11 @@ export default ({ app }: { app: express.Application }) => {
             defaults: defaultUser
           });
 
-          done(null, profile);
+          done(null, user);
         } catch (error) {
-          done(error as Error, undefined);
+          done(error as Error, false, {
+            message: 'Something went wrong when signing up your google account'
+          });
         }
       }
     )

@@ -21,9 +21,14 @@ export default (router: Router) => {
     }
   );
 
-  route.get('/logout', (req, res) => {
-    // req.logout();
-    res.redirect('/');
+  route.get('/logout', (req, res, next) => {
+    req.logout(function (err) {
+      if (err) {
+        return next(err);
+      }
+
+      res.redirect('/');
+    });
   });
 
   route.get('/users/me', (req, res) => {

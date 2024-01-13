@@ -1,7 +1,5 @@
 import Axios, { HttpStatusCode } from 'axios';
 
-import { notifications } from '@mantine/notifications';
-
 import { CONFIG } from '@/config';
 import history from '@/lib/history';
 
@@ -16,12 +14,13 @@ axios.interceptors.response.use(
     return response.data;
   },
   (error) => {
-    const message = error.response?.data?.message || error.message;
-    notifications.show({
-      title: 'Error',
-      message,
-      color: 'error'
-    });
+    // Ignore this error message, instead we handle react-query errors
+    // const message = error.response?.data?.message || error.message;
+    // notifications.show({
+    //   title: 'Error',
+    //   message,
+    //   color: 'error'
+    // });
 
     // redirect to login page for unauthorized users
     if (error.response?.status === HttpStatusCode.Unauthorized) {

@@ -1,12 +1,16 @@
 import { useState } from 'react';
 
 import { useCurrentUser } from '@/modules/users/api/getUsers';
-import { capitalizeFullName } from '@/utils';
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   // TODO give proper type for user
   const { data: currentUser, isLoading } = useCurrentUser();
+
+  const redirectToGoogleSSO = async () => {
+    const googleLoginUrl = 'http://localhost:3001/api/auth/google';
+    const newWindow = window.open(googleLoginUrl, '_blank', 'width=500, height=600');
+  };
 
   if (isLoading) return null;
 
@@ -62,14 +66,13 @@ const Navbar = () => {
             {!currentUser ? (
               <>
                 <div className="hidden justify-end pr-16 sm:flex lg:pr-0">
-                  <a
-                    href="/#"
+                  <button
+                    // href="/#"
                     className="px-7 py-3 text-base font-medium text-dark hover:text-primary dark:text-white"
-                    onClick={handleLogin}
-                    target="_blank"
+                    onClick={redirectToGoogleSSO}
                   >
                     Sign in with Gmail
-                  </a>
+                  </button>
 
                   <a
                     href="/#"
@@ -80,7 +83,7 @@ const Navbar = () => {
                 </div>
               </>
             ) : (
-              <>{capitalizeFullName(currentUser.displayName)}</>
+              <>{currentUser.fullName}</>
             )}
           </div>
         </div>
